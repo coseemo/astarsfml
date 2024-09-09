@@ -13,3 +13,11 @@ void Tile::draw(sf::RenderWindow &window) {
     window.draw(shape);
 }
 
+bool Tile::operator==(const Tile& other) const {
+    return (x == other.x) && (y == other.y) && (cost == other.cost);
+}
+
+bool Tile::operator!=(const Tile& other) const {
+    return (x != other.x) || (y != other.y) || (cost != other.cost);
+}
+

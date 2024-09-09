@@ -1,28 +1,26 @@
 #include <iostream>
-#include "game.h"
+#include "Game.h"
 #include "tests.h"
 
-void runTest(Map &map, Tile &start, Tile &end) {
-    // Ridefinisci la mappa globale e aggiorna le posizioni globali
-    world_map = map;
-    x_s = start.x;
-    y_s = start.y;
-    x_e = end.x;
-    y_e = end.y;
-
-    // Reimposta StartTile e EndTile
-    StartTile = world_map.tiles[(y_s * world_map.width) + x_s];
-    EndTile = world_map.tiles[(y_e * world_map.width) + x_e];
-
-    // Reimposta il personaggio di test
-    test_character = Character(&StartTile, map);
-
-    // Inserisci qui la logica di test
-    std::cout << "Esecuzione test su mappa con dimensioni (" << map.width << "x" << map.height << ")...\n";
-}
 int main() {
-    Game game;
-    game.run();
+    // Inizializza i dati di test
+    initializeTestData();
+
+    // Itera attraverso le mappe e le coppie di tile di test
+    for (size_t i = 0; i < testMaps.size(); ++i) {
+        Map& map = testMaps[i];
+        Tile& startTile = std::get<0>(testTiles[i]);
+        Tile& endTile = std::get<1>(testTiles[i]);
+
+        // Crea un personaggio con il tile di partenza
+        Character character(&startTile, map);
+
+        // Crea un'istanza di Game e avvia il gioco
+        Game game(map, character, startTile, endTile);
+        game.run();
+
+        std::cout << "Test " << i + 1 << " completato." << std::endl;
+    }
+
     return 0;
 }
-

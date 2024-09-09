@@ -11,17 +11,20 @@
 #include <array>
 
 class Game {
-public:
 
-    Game();
+public:
+    Game(Map& map, Character& character, Tile& startTile, Tile& endTile);
     void run();
 
+private:
     sf::RenderWindow window;
-    Map world;
-    Character character;
+    Map& world;
+    Character& character;
+    Tile& startTile;
+    Tile& endTile;
 
     void processEvents();
-    void update(std::vector<Tile*>::iterator &it, std::vector<Tile*>::iterator);
+    void update(std::vector<Tile*>::iterator &it, std::vector<Tile*>::iterator end);
     void render();
 };
 

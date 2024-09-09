@@ -13,5 +13,7 @@ public:
 
     Tile(int x, int y, int cost);
     void draw(sf::RenderWindow &window);
+    bool operator==(const Tile& other) const;
+    bool operator!=(const Tile& other) const;
 };
 #endif //ASTARSEARCH_TILE_H

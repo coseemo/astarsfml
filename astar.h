@@ -5,7 +5,7 @@
 #ifndef ASTARSEARCH_ASTAR_H
 #define ASTARSEARCH_ASTAR_H
 #include "stlastar.h"
-#include "Tile.h"
+#include "map.h"
 #include "tests.h"
 #include "astar.h"
 
@@ -15,9 +15,9 @@ class MapSearchNode
 public:
     int x;	 // the (x,y) positions of the node
     int y;
+    Map* map;
 
-    MapSearchNode() { x = y = 0; }
-    MapSearchNode( int px, int py ) { x=px; y=py; }
+    MapSearchNode(int x = 0, int y = 0, Map* map = nullptr);
 
     float GoalDistanceEstimate( MapSearchNode &nodeGoal );
     bool IsGoal( MapSearchNode &nodeGoal );

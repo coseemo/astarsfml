@@ -6,11 +6,17 @@
 #include "astar.h"
 
 
-Game::Game() : window(sf::VideoMode(800, 600), "Find A* way"), world(world_map), character(test_character) {}
+Game::Game(Map& map, Character& character, Tile& startTile, Tile& endTile)
+        : window(sf::VideoMode(800, 600), "Find A* way"),
+          world(map),
+          character(character),
+          startTile(startTile),
+          endTile(endTile)
+          {}
 
 void Game::run() {
 
-    std::vector<Tile*> path = astar(StartTile, EndTile, world);
+    std::vector<Tile*> path = astar(startTile, endTile, world);
     auto it = path.begin();
     auto end = path.end();
 
@@ -41,7 +47,13 @@ void Game::processEvents() {
 
 void Game::update(std::vector<Tile*>::iterator &it, std::vector<Tile*>::iterator end) {
     if (it != end) {
-        character.moveTo(*it);
+        // Sposta il personaggio e cambia la texture
+        if (**it != startTile && **it != endTile) {
+            character.moveTo(*it, false);
+        } else {
+            // Sposta il personaggio senza cambiare la texture
+            character.moveTo(*it, true);
+        }
         ++it;
     }
 }

@@ -8,20 +8,28 @@
 #include <random>
 #include <random>
 
+extern sf::Texture grassTexture;
+extern sf::Texture wallTexture;
+extern sf::Texture stepTexture;
+
+void loadTextures();
+
 class Map {
 public:
     std::vector<Tile> tiles;
     int width, height;
-    sf::Texture grassTexture;
-    sf::Texture wallTexture;
-    sf::Texture stepTexture;
     std::mt19937 rng;
 
     Map(int width, int height);
     int GetMap( int x, int y );
     int generateRandomCost();
     void draw(sf::RenderWindow &window);
-    void walked(Tile* tile);
+    void walked(Tile *tile);
+    void limits(Tile *tile);
+    void setwall(Tile *tile);
+
 };
+
+
 
 #endif //ASTARSEARCH_MAP_H

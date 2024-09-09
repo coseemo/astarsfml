@@ -6,17 +6,21 @@
 #define ASTARSEARCH_TESTS_H
 #include "map.h"
 #include "character.h"
+#include <vector>
+#include <tuple>
+#include <random>
 
-extern int MAP_WIDTH;
-extern int MAP_HEIGHT;
-extern Map world_map;
-extern int x_s;
-extern int y_s;
-extern int x_e;
-extern int y_e;
-extern Tile &StartTile;
-extern Tile &EndTile;
-extern Character test_character;
+// Dichiarazione degli array globali di mappe e personaggi
+extern std::vector<Map> testMaps;
+extern std::vector<std::tuple<Tile, Tile>> testTiles;
+extern std::mt19937 rng;
+
+// Funzione per ottenere un tile random
+Tile* getRandomValidTile(Map& map, std::mt19937& ran);
+
+// Funzione per inizializzare i dati di test
+void initializeTestData();
+
 
 
 #endif// ASTARSEARCH_TESTS_H

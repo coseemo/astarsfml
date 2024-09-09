@@ -5,6 +5,8 @@
 
 using namespace std;
 
+MapSearchNode::MapSearchNode(int x, int y, Map* map) : x(x), y(y), map(map) {}
+
 bool MapSearchNode::IsSameState( MapSearchNode &rhs )
 {
 
@@ -71,36 +73,36 @@ bool MapSearchNode::GetSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapS
 
 	// push each possible move except allowing the search to go backwards
 
-	if( (world_map.GetMap( x-1, y ) < 9)
+	if( (map->GetMap( x-1, y ) < 9)
 		&& !((parent_x == x-1) && (parent_y == y))
 	  ) 
 	{
-		NewNode = MapSearchNode( x-1, y );
+		NewNode = MapSearchNode( x-1, y, map);
 		astarsearch->AddSuccessor( NewNode );
 	}	
 
-	if( (world_map.GetMap( x, y-1 ) < 9)
+	if( (map->GetMap( x, y-1 ) < 9)
 		&& !((parent_x == x) && (parent_y == y-1))
 	  ) 
 	{
-		NewNode = MapSearchNode( x, y-1 );
+		NewNode = MapSearchNode( x, y-1 , map);
 		astarsearch->AddSuccessor( NewNode );
 	}	
 
-	if( (world_map.GetMap( x+1, y ) < 9)
+	if( (map->GetMap( x+1, y ) < 9)
 		&& !((parent_x == x+1) && (parent_y == y))
 	  ) 
 	{
-		NewNode = MapSearchNode( x+1, y );
+		NewNode = MapSearchNode( x+1, y, map);
 		astarsearch->AddSuccessor( NewNode );
 	}	
 
 		
-	if( (world_map.GetMap( x, y+1 ) < 9)
+	if( (map->GetMap( x, y+1 ) < 9)
 		&& !((parent_x == x) && (parent_y == y+1))
 		)
 	{
-		NewNode = MapSearchNode( x, y+1 );
+		NewNode = MapSearchNode( x, y+1, map);
 		astarsearch->AddSuccessor( NewNode );
 	}	
 
@@ -113,7 +115,7 @@ bool MapSearchNode::GetSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapS
 
 float MapSearchNode::GetCost( MapSearchNode &successor )
 {
-	return (float) world_map.GetMap( x, y );
+	return (float) map->GetMap( x, y );
 
 }
 
@@ -124,7 +126,12 @@ size_t MapSearchNode::Hash()
 	return h1 ^ (h2 << 1);
 }
 
-vector<Tile*> astar(Tile &start, Tile &end, Map &world) {
+vector<Tile*> astar(Tile &start, Tile &end, Map &map) {
+
+    if (start.cost == 9 || end.cost == 9) {
+        cout << "non trovato\n";
+        return {};
+    }
 
 	AStarSearch<MapSearchNode> astarsearch;
 
@@ -137,15 +144,8 @@ vector<Tile*> astar(Tile &start, Tile &end, Map &world) {
 	while(SearchCount < NumSearches)
 	{
 
-		// Create a start state
-		MapSearchNode nodeStart;
-		nodeStart.x = start.x;
-		nodeStart.y = start.y;
-
-		// Define the goal state
-		MapSearchNode nodeEnd;
-		nodeEnd.x = end.x;
-		nodeEnd.y = end.y;
+        MapSearchNode nodeStart(start.x, start.y, &map);
+        MapSearchNode nodeEnd(end.x, end.y, &map);
 		
 		// Set Start and goal states
 		
@@ -199,7 +199,7 @@ vector<Tile*> astar(Tile &start, Tile &end, Map &world) {
 		}
 		while( SearchState == AStarSearch<MapSearchNode>::SEARCH_STATE_SEARCHING );
 
-		if( SearchState == AStarSearch<MapSearchNode>::SEARCH_STATE_SUCCEEDED )
+		if( SearchState == AStarSearch<MapSearchNode>::SEARCH_STATE_SUCCEEDED)
 		{
 			cout << "Search found goal state\n";
 
@@ -211,7 +211,7 @@ vector<Tile*> astar(Tile &start, Tile &end, Map &world) {
 				int steps = 0;
 
 				node->PrintNodeInfo();
-                Tile* reached = &world.tiles[(node->y*world.width)+node->x];
+                Tile* reached = &map.tiles[(node->y*map.width)+node->x];
                 path.push_back(reached);
 				for( ;; )
 				{
@@ -223,7 +223,7 @@ vector<Tile*> astar(Tile &start, Tile &end, Map &world) {
 					}
 
 					node->PrintNodeInfo();
-                    reached = &world.tiles[(node->y*world.width)+node->x];
+                    reached = &map.tiles[(node->y*map.width)+node->x];
                     path.push_back(reached);
 					steps ++;
 				

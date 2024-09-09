@@ -11,11 +11,12 @@
 class Character {
 
 public:
-
     Character(Tile *startTile, Map &world);
-    void moveTo(Tile* targetTile);
+    void moveTo(Tile* targetTile, bool startend);
     void draw(sf::RenderWindow &window) const;
+    Tile* getCurrentTile() const;
 
+private:
     Tile* currentTile;
     Map world;
     sf::CircleShape shape;
