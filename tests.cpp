@@ -16,5 +16,5 @@ int y_e = 19;
 Tile &StartTile = world_map.tiles[(y_s*world_map.width)+x_s];
 Tile &EndTile = world_map.tiles[(y_e*world_map.width)+x_e];
 
-Character test_character = Character(&StartTile);
+Character test_character = Character(&StartTile, world_map);
 

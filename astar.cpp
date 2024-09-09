@@ -251,9 +251,5 @@ vector<Tile*> astar(Tile &start, Tile &end, Map &world) {
 	}
 	
 	assert(true && "failed to be true");
-	printf("Tests succeeded\n");
-    for(auto i : path){
-        cout << i->y << ", " << i->x << endl;
-    }
     return path;
 }

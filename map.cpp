@@ -9,14 +9,16 @@ Map::Map(int width, int height) : width(width), height(height) {
     std::random_device rd;
     rng = std::mt19937(rd());
 
-    // Carica la texture per i costi normali
     if (!grassTexture.loadFromFile("C:/Users/cosim/CLionProjects/astarsearch/textures/grass.png")) {
         throw std::runtime_error("Impossibile caricare la texture grass.png");
     }
 
-    // Carica la texture per i costi elevati (es. costo 9)
     if (!wallTexture.loadFromFile("C:/Users/cosim/CLionProjects/astarsearch/textures/wall.png")) {
         throw std::runtime_error("Impossibile caricare la texture wall.png");
+    }
+
+    if (!stepTexture.loadFromFile("C:/Users/cosim/CLionProjects/astarsearch/textures/step.png")) {
+        throw std::runtime_error("Impossibile caricare la texture step.png");
     }
 
     for (int y = 0; y < width; ++y) {
@@ -33,6 +35,8 @@ Map::Map(int width, int height) : width(width), height(height) {
 
 void Map::draw(sf::RenderWindow &window) {
     sf::Font font;
+
+    window.setActive(true);
 
     if (!font.loadFromFile("C:/Users/cosim/CLionProjects/astarsearch/font/gothic.ttf")) {
         throw std::runtime_error("Impossibile caricare il font gothic.ttf");
@@ -81,4 +85,8 @@ int Map::GetMap( int x, int y )
 int Map::generateRandomCost() {
     std::uniform_int_distribution<int> dist(0, 9);
     return dist(rng);
+}
+
+void Map::walked(Tile *tile) {
+    tile->shape.setTexture(&stepTexture);
 }

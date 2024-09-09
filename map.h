@@ -14,12 +14,14 @@ public:
     int width, height;
     sf::Texture grassTexture;
     sf::Texture wallTexture;
+    sf::Texture stepTexture;
     std::mt19937 rng;
 
     Map(int width, int height);
     int GetMap( int x, int y );
     int generateRandomCost();
     void draw(sf::RenderWindow &window);
+    void walked(Tile* tile);
 };
 
 #endif //ASTARSEARCH_MAP_H

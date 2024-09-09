@@ -12,12 +12,12 @@ class Character {
 
 public:
 
-    Character(Tile* startTile);
+    Character(Tile *startTile, Map &world);
     void moveTo(Tile* targetTile);
     void draw(sf::RenderWindow &window) const;
 
     Tile* currentTile;
-    sf::Texture stepTexture;
+    Map world;
     sf::CircleShape shape;
 };
 #endif //ASTARSEARCH_CHARACTER_H
