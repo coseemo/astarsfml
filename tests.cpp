@@ -21,7 +21,7 @@ void initializeTestData() {
 
     // Inizializzo N mappe di test random
     for (int i = 0; i < N; ++i) {
-        testMaps.emplace_back(Map(20,20));
+        testMaps.emplace_back(20,20);
     }
 
     // Inizializzo N coppie di tile di partenza e di arrivo

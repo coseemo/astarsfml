@@ -7,7 +7,7 @@
 
 
 Game::Game(Map& map, Character& character, Tile& startTile, Tile& endTile)
-        : window(sf::VideoMode(800, 600), "Find A* way"),
+        : window(sf::VideoMode(600, 600), "Find A* way"),
           world(map),
           character(character),
           startTile(startTile),
