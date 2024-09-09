@@ -15,6 +15,7 @@ extern sf::Texture stepTexture;
 void loadTextures();
 
 class Map {
+
 public:
     std::vector<Tile> tiles;
     int width, height;

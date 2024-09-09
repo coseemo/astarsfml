@@ -1,12 +1,11 @@
 //
-// Created by cosim on 08/08/2024.
+// Creato da cosim il 08/08/2024.
 //
 
 #ifndef ASTARSEARCH_CHARACTER_H
 #define ASTARSEARCH_CHARACTER_H
 #include "Tile.h"
 #include "map.h"
-
 
 class Character {
 
@@ -21,4 +20,5 @@ private:
     Map world;
     sf::CircleShape shape;
 };
+
 #endif //ASTARSEARCH_CHARACTER_H

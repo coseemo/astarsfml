@@ -61,7 +61,7 @@ Tile* getRandomValidTile(Map& map, std::mt19937& ran) {
         int x = distX(ran);
         int y = distY(ran);
         tile = &map.tiles[y * map.width + x];
-    } while (tile->cost == 9); // Escludo i muri (considerando che 9 è il costo dei muri)
+    } while (tile->cost == 9); // Escludo i muri
 
     return tile;
 }

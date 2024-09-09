@@ -1,7 +1,6 @@
 //
 // Created by cosim on 08/08/2024.
 //
-
 #ifndef ASTARSEARCH_TILE_H
 #define ASTARSEARCH_TILE_H
 #include <SFML/graphics.hpp>

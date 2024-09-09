@@ -9,8 +9,7 @@
 #include "tests.h"
 #include "astar.h"
 
-class MapSearchNode
-{
+class MapSearchNode{
 
 public:
     int x;	 // the (x,y) positions of the node
@@ -18,14 +17,12 @@ public:
     Map* map;
 
     MapSearchNode(int x = 0, int y = 0, Map* map = nullptr);
-
     float GoalDistanceEstimate( MapSearchNode &nodeGoal );
     bool IsGoal( MapSearchNode &nodeGoal );
     bool GetSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapSearchNode *parent_node );
     float GetCost( MapSearchNode &successor );
     bool IsSameState( MapSearchNode &rhs );
     size_t Hash();
-
     void PrintNodeInfo();
 
 };
