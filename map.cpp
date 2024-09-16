@@ -14,22 +14,22 @@ void loadTextures() {
     static bool texturesLoaded = false; // Assicura che le texture vengano caricate solo una volta
     if (!texturesLoaded) {
         // Carico la texture dell'erba
-        if (!grassTexture.loadFromFile("C:/Users/cosim/CLionProjects/astarsearch/textures/grass.png")) {
+        if (!grassTexture.loadFromFile("textures/grass.png")) {
             throw std::runtime_error("Impossibile caricare la texture grass.png");
         }
 
         // Carico la texture del muro
-        if (!wallTexture.loadFromFile("C:/Users/cosim/CLionProjects/astarsearch/textures/wall.png")) {
+        if (!wallTexture.loadFromFile("textures/wall.png")) {
             throw std::runtime_error("Impossibile caricare la texture wall.png");
         }
 
         // Carico la texture del passo
-        if (!stepTexture.loadFromFile("C:/Users/cosim/CLionProjects/astarsearch/textures/step.png")) {
+        if (!stepTexture.loadFromFile("textures/step.png")) {
             throw std::runtime_error("Impossibile caricare la texture step.png");
         }
 
         // Carico la texture del limite
-        if (!limitTexture.loadFromFile("C:/Users/cosim/CLionProjects/astarsearch/textures/limit.png")) {
+        if (!limitTexture.loadFromFile("textures/limit.png")) {
             throw std::runtime_error("Impossibile caricare la texture limit.png");
         }
 

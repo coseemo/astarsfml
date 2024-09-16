@@ -35,3 +35,7 @@
 29	5141	7475903534464471	CMakeFiles/astarsearch.dir/astar.cpp.obj	cfaff41e11f6f7c0
 2937	6926	7475903552357012	CMakeFiles/astarsearch.dir/tests.cpp.obj	80b3bdf577c2e29d
 6926	7799	7475903560962230	astarsearch.exe	4c69573e49e8a44c
+20	5324	7481976602959834	CMakeFiles/astarsearch.dir/map.cpp.obj	455de7131a0d68c3
+5326	6953	7481976619146466	astarsearch.exe	4c69573e49e8a44c
+11	3409	7481977011092334	CMakeFiles/astarsearch.dir/map.cpp.obj	455de7131a0d68c3
+3410	4076	7481977017672092	astarsearch.exe	4c69573e49e8a44c
