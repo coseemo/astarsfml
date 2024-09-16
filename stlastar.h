@@ -27,9 +27,9 @@ given where due.
 #define STLASTAR_H
 // used for text debugging
 #include <iostream>
-#include <stdio.h>
+#include <cstdio>
 //#include <conio.h>
-#include <assert.h>
+#include <cassert>
 
 // stl includes
 #include <algorithm>
@@ -133,7 +133,7 @@ public: // methods
 	{
 	}
 
-	AStarSearch( int MaxNodes ) :
+	explicit AStarSearch( int MaxNodes ) :
 		m_State( SEARCH_STATE_NOT_INITIALISED ),
 		m_CurrentSolutionNode( NULL ),
 #if USE_FSA_MEMORY
@@ -799,7 +799,7 @@ private: // data
 	unsigned int m_State;
 
 	// Counts steps
-	int m_Steps;
+	int m_Steps{};
 
 	// Start and goal state pointers
 	Node *m_Start;
@@ -827,7 +827,7 @@ private: // data
 template <class T> class AStarState
 {
 public:
-	virtual ~AStarState() {}
+	virtual ~AStarState() = default;
 	virtual float GoalDistanceEstimate( T &nodeGoal ) = 0; // Heuristic function which computes the estimated cost to the goal node
 	virtual bool IsGoal( T &nodeGoal ) = 0; // Returns true if this node is the goal node
 	virtual bool GetSuccessors( AStarSearch<T> *astarsearch, T *parent_node ) = 0; // Retrieves all successors to this node and adds them via astarsearch.addSuccessor()

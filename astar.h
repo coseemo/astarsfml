@@ -16,7 +16,7 @@ public:
     int y;
     Map* map;
 
-    MapSearchNode(int x = 0, int y = 0, Map* map = nullptr);
+    explicit MapSearchNode(int x = 0, int y = 0, Map* map = nullptr);
     float GoalDistanceEstimate( MapSearchNode &nodeGoal );
     bool IsGoal( MapSearchNode &nodeGoal );
     bool GetSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapSearchNode *parent_node );

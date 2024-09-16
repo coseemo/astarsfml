@@ -11,7 +11,7 @@ public:
     sf::RectangleShape shape;
 
     Tile(int x, int y, int cost);
-    void draw(sf::RenderWindow &window);
+    void draw(sf::RenderWindow &window) const;
     bool operator==(const Tile& other) const;
     bool operator!=(const Tile& other) const;
 };

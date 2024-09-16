@@ -26,8 +26,8 @@ public:
     int generateRandomCost();
     void draw(sf::RenderWindow &window);
     void walked(Tile *tile);
-    void limits(Tile *tile);
-    void setwall(Tile *tile);
+    static void limits(Tile *tile);
+    static void setwall(Tile *tile);
 
 };
 

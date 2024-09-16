@@ -54,7 +54,7 @@ Tile* getRandomValidTile(Map& map, std::mt19937& ran) {
     std::uniform_int_distribution<int> distX(0, map.width - 1);
     std::uniform_int_distribution<int> distY(0, map.height - 1);
 
-    Tile* tile = NULL;
+    Tile* tile = nullptr;
 
     // Continuo a cercare finché non trovo un tile valido
     do {
