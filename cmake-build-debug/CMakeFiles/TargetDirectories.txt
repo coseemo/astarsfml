@@ -1,3 +1,0 @@
-C:/Users/cosim/CLionProjects/astarsearch/cmake-build-debug/CMakeFiles/astarsearch.dir
-C:/Users/cosim/CLionProjects/astarsearch/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/cosim/CLionProjects/astarsearch/cmake-build-debug/CMakeFiles/rebuild_cache.dir
