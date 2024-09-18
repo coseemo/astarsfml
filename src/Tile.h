@@ -21,6 +21,7 @@ public:
     sf::RectangleShape& getShape();
 
 private:
+
     int x, y, cost;
     sf::RectangleShape shape;
 };
