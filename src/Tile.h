@@ -8,7 +8,6 @@
 class Tile{
 
 public:
-
     Tile(int x, int y, int cost, sf::Texture* texture);
     void draw(sf::RenderWindow &window) const;
     bool operator==(const Tile& other) const;
@@ -22,9 +21,7 @@ public:
     sf::RectangleShape& getShape();
 
 private:
-
     int x, y, cost;
     sf::RectangleShape shape;
-
 };
 #endif //ASTARSEARCH_TILE_H

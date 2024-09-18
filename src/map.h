@@ -11,7 +11,6 @@
 class Map {
 
 public:
-
     Map(int width, int height, std::vector<int> mapCosts);
     int getWidth() const;
     int getHeight() const;
@@ -23,16 +22,13 @@ public:
     void draw(sf::RenderWindow &window) const;
 
 private:
-
     int width, height;
     std::vector<Tile> tiles;
     sf::Texture wallTexture;
     sf::Texture grassTexture;
     sf::Texture stepTexture;
     sf::Texture limitTexture;
-
     void loadTextures();
-
 };
 
 

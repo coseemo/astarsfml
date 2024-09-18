@@ -122,7 +122,7 @@ vector<Tile*> astar(Tile &start, Tile &end, Map &map) {
 
     // Verifico che la posizione di partenza o di arrivo non siano bloccate
     if (start.getCost() == 9 || end.getCost() == 9) {
-        cout << "non trovato\n";
+        cout << "Impossibile trovare un percorso che inizia o finisce su un muro\n";
         return {};
     }
 
@@ -196,7 +196,7 @@ vector<Tile*> astar(Tile &start, Tile &end, Map &map) {
 
         if( SearchState == AStarSearch<MapSearchNode>::SEARCH_STATE_SUCCEEDED)
         {
-            cout << "Search found goal state\n";
+            cout << "La ricerca è andata a buon fine\n";
 
             // Recupero la soluzione trovata
             MapSearchNode *node = astarsearch.GetSolutionStart();
@@ -227,7 +227,7 @@ vector<Tile*> astar(Tile &start, Tile &end, Map &map) {
                 steps++;
             };
 
-            cout << "Solution steps " << steps << endl;
+            cout << "Passi soluzione: " << steps << endl;
 
             // Libero i nodi della soluzione dalla memoria
             astarsearch.FreeSolutionNodes();
@@ -236,11 +236,11 @@ vector<Tile*> astar(Tile &start, Tile &end, Map &map) {
             // Caso in cui la ricerca fallisce
         else if( SearchState == AStarSearch<MapSearchNode>::SEARCH_STATE_FAILED )
         {
-            cout << "Search terminated. Did not find goal state\n";
+            cout << "La ricerca è terminata. L'obbiettivo non è stato trovato\n";
         }
 
         // Stampo il numero di passi fatti nella ricerca
-        cout << "SearchSteps : " << SearchSteps << "\n";
+        cout << "Passi ricerca: " << SearchSteps << "\n";
 
         SearchCount++;
 

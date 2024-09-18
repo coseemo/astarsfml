@@ -35,8 +35,6 @@ void Map::loadTextures() {
         throw std::runtime_error("Impossibile caricare la texture limit.png");
     }
 
-    else
-        std::cout << "Texture importate correttamente" << std::endl;
 }
 
 // Funzione per disegnare la mappa nella finestra del gioco

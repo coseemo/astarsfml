@@ -8,6 +8,7 @@
 #include <array>
 
 class Game {
+
 public:
     Game(Map& map, Character& character, Tile& startTile, Tile& endTile);
     void run(sf::RenderWindow &window) const;
