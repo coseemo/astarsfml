@@ -1,0 +1,6 @@
+#Percorsi da ignorare
+\cmake-build-debug\
+
+#DLL da ignorare
+*.dll
+
