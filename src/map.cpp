@@ -6,6 +6,11 @@
 
 
 Map::Map(int width, int height, std::vector<int> mapCosts) : width(width), height(height) {
+
+    if (width <= 0 || height <= 0) {
+        throw std::invalid_argument("L'altezza e la larghezza devono essere maggiori di 0");
+    }
+
     // Carico le texture
     loadTextures();
 

@@ -1,23 +1,37 @@
 #include "gtest/gtest.h"
-#include "../src/game.h"
 #include "../src/astar.h"
 
 // Test per mappa con percorso valido 1
 TEST(AStarTest, ValidPath1) {
     cout << "TEST 1 - PERCORSO VALIDO 1\n" << endl;
     std::vector<int> Costsmap =
-            {0, 1, 9, 6, 7,
-             0, 3, 9, 0, 1,
-             9, 6, 0, 0, 3,
-             4, 6, 9, 0, 3,
+            {0, 7, 9, 6, 7,
+             2, 1, 9, 9, 1,
+             9, 0, 0, 0, 8,
+             4, 6, 9, 5, 7,
              9, 6, 9, 0, 0};
     Map world(5, 5, Costsmap);
     Tile& start = world.getTiles()[0];
     Tile& end = world.getTiles()[24];
     std::vector<Tile*> path = astar(start, end, world);
+
+    // Inizializzo una variabile in cui memorizzo il costo del percorso calcolato
+    int calculatedPathCost = 0;
+    for (Tile* tile : path) {
+        calculatedPathCost += tile->getCost();
+    }
+
+    // Inizializzo una variabile in cui memorizzo il costo del percorso minimo
+    // Cammino atteso:(0,0) -> (1,0) -> (1,1) -> (2,1) -> (2,2) -> (2,3) -> (3,3) -> (4,3) -> (4,4)
+    int expectedPathCost = 0 + 2 + 1 + 0 + 0 + 0 + 5 + 0 + 0; // = 8
+
+
+    ASSERT_EQ(calculatedPathCost, expectedPathCost); // Il percorso deve avere il costo minimo
     ASSERT_FALSE(path.empty());  // Il percorso non deve essere vuoto
     ASSERT_EQ(path.front(), &start);  // Il percorso deve iniziare dal tile di partenza
     ASSERT_EQ(path.back(), &end);  // Il percorso deve finire al tile di arrivo
+
+    cout <<"Il percorso corrisponde a quello minimo" << endl;
     cout << "---------------------------------------\n\n";
 }
 
@@ -25,18 +39,33 @@ TEST(AStarTest, ValidPath1) {
 TEST(AStarTest, ValidPath2) {
     cout << "TEST 2 - PERCORSO VALIDO 2\n" << endl;
     std::vector<int> Costsmap =
-            {4, 1, 9, 6, 7,
-             0, 3, 9, 0, 1,
-             9, 6, 0, 0, 3,
-             4, 6, 9, 0, 3,
-             9, 6, 9, 0, 0};
+            {1, 3, 1, 1, 9,
+             1, 9, 9, 1, 9,
+             1, 1, 1, 1, 9,
+             9, 9, 9, 1, 9,
+             1, 1, 1, 1, 1};
     Map world(5, 5, Costsmap);
     Tile& start = world.getTiles()[0];
     Tile& end = world.getTiles()[24];
     std::vector<Tile*> path = astar(start, end, world);
+
+    // Inizializzo una variabile in cui memorizzo il costo del percorso calcolato
+    int calculatedPathCost = 0;
+    for (Tile* tile : path) {
+        calculatedPathCost += tile->getCost();
+    }
+
+    // Inizializzo una variabile in cui memorizzo il costo del percorso minimo
+    // Il cammino atteso:(0,0) -> (1,0) -> (2,0) -> (2,1) -> (2,2) -> (2,3) -> (3,3) -> (4,3) -> (4,4)
+    int expectedPathCost = 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1; // = 9
+
+    ASSERT_EQ(calculatedPathCost, expectedPathCost); // Il percorso deve avere il costo minimo
     ASSERT_FALSE(path.empty());  // Il percorso non deve essere vuoto
     ASSERT_EQ(path.front(), &start);  // Il percorso deve iniziare dal tile di partenza
     ASSERT_EQ(path.back(), &end);  // Il percorso deve finire al tile di arrivo
+
+
+    cout <<"Il percorso corrisponde a quello minimo" << endl;
     cout << "---------------------------------------\n\n";
 }
 
