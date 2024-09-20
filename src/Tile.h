@@ -13,9 +13,7 @@ public:
     bool operator==(const Tile& other) const;
     bool operator!=(const Tile& other) const;
     int getX() const;
-    void setX(int x);
     int getY() const;
-    void setY(int y);
     int getCost() const;
     void setCost(int cost);
     sf::RectangleShape& getShape();

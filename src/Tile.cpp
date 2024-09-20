@@ -33,17 +33,10 @@ int Tile::getX() const {
     return x;
 }
 
-void Tile::setX(int x) {
-    Tile::x = x;
-}
-
 int Tile::getY() const {
     return y;
 }
 
-void Tile::setY(int y) {
-    Tile::y = y;
-}
 
 int Tile::getCost() const {
     return cost;

@@ -13,13 +13,12 @@ class Map {
 public:
     Map(int width, int height, std::vector<int> mapCosts);
     int getWidth() const;
-    int getHeight() const;
     void walked(Tile& tile);
     void limits(Tile& startTile, Tile& endTile);
-    void setWall(Tile& tile);
     int getMap(int x, int y);
     std::vector<Tile> & getTiles();
     void draw(sf::RenderWindow &window) const;
+    //void setWall(Tile& tile);
 
 private:
     int width, height;

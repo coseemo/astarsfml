@@ -32,7 +32,3 @@ void Character::draw(sf::RenderWindow &window) const {
     window.setActive(true);  // Attivo la finestra per il rendering
     window.draw(shape);      // Disegno la forma del personaggio
 }
-
-Tile* Character::getCurrentTile() const {
-    return currentTile;
-}

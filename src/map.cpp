@@ -88,20 +88,16 @@ void Map::limits(Tile& startTile, Tile& endTile) {
     endTile.getShape().setTexture(&limitTexture);
 }
 
-// Funzione che imposta una tessera come muro
-void Map::setWall(Tile& tile){
+/* Funzione che imposta una tessera come muro
+    void Map::setWall(Tile& tile){
     tile.setCost(9);  // Imposto il costo della tessera a 9 (non percorribile)
     tile.getShape().setTexture(&wallTexture);  // Cambio la texture
     tile.getShape().setFillColor(sf::Color(200,0,0, 200));  // Imposto un colore per distinguere il muro aggiunto
 }
-
+*/
 
 int Map::getWidth() const {
     return width;
-}
-
-int Map::getHeight() const {
-    return height;
 }
 
 std::vector<Tile>& Map::getTiles() {
