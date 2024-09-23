@@ -16,9 +16,9 @@ public:
     void walked(Tile& tile);
     void limits(Tile& startTile, Tile& endTile);
     int getMap(int x, int y);
+    Tile* getTile(int x, int y);
     std::vector<Tile> & getTiles();
     void draw(sf::RenderWindow &window) const;
-    //void setWall(Tile& tile);
 
 private:
     int width, height;

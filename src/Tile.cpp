@@ -42,10 +42,6 @@ int Tile::getCost() const {
     return cost;
 }
 
-/*void Tile::setCost(int c) {
-    Tile::cost = c;
-}
-*/
 
 sf::RectangleShape& Tile::getShape(){
     return shape;

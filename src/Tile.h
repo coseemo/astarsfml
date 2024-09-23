@@ -16,7 +16,6 @@ public:
     int getY() const;
     int getCost() const;
     sf::RectangleShape& getShape();
-    //void setCost(int cost);
 
 private:
     int x, y, cost;
